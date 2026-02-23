@@ -12,7 +12,7 @@
         "moduleResolution": "bundler",
         "moduleDetection": "auto",
         "noEmit": true,
-        "outDir": "./dist/types",
+        "outDir": "./dist",
         "paths": {
             "@oxigraph/*": ["./src/assets/oxigraph/*"]
         },
