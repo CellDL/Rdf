@@ -37,15 +37,17 @@ export {
 
 export type {
     BlankNode,
+    ContentType,
     Literal,
     NamedNode,
     Statement,
     SubjectType,
     PredicateType,
     ObjectType,
-    ContentType,
     Term
 } from './src/oxiStore'
+
+export { bgRdfStatements } from './src/index'
 
 //==============================================================================
 //==============================================================================

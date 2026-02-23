@@ -151,10 +151,16 @@ export class RdfStore {
         return this.statementsMatching(null, null, null, graph)
     }
 
-    add(s: SubjectType, p: PredicateType, o: ObjectType, g: NamedNode | null = null): Statement {
+    add(s: SubjectType, p: PredicateType, o: ObjectType, g: NamedNode|null = null): Statement {
         const statement = globalThis.rdfModule.quad(s, p, o, g || globalThis.rdfModule.defaultGraph())
         this.#rdfStore.add(statement)
         return makeStatement(statement)
+    }
+
+    addStatements(statements: Statement[], graph: NamedNode|null = null) {
+        for (const statement of statements) {
+            this.add(statement.subject, statement.predicate, statement.object, graph)
+        }
     }
 
     contains(
