@@ -147,6 +147,17 @@ export class RdfStore {
         this.#rdfStore = new globalThis.rdfModule.Store()
     }
 
+    get size(): number {
+        let size = 0
+        this.query(`
+            SELECT (COUNT(*) AS ?count)
+                WHERE { ?s ?p ?o }
+        `).forEach((r) => {
+            size = Number(r.get('count')?.value || 0)
+        })
+        return size
+    }
+
     statements(graph: NamedNode | null = null): Statement[] {
         return this.statementsMatching(null, null, null, graph)
     }
