@@ -195,7 +195,7 @@ export class RdfStore {
         }
     }
 
-    removeStatements(
+    removeStatementsMatching(
         s: SubjectType | null = null,
         p: PredicateType | null = null,
         o: ObjectType | null = null,
