@@ -18,8 +18,6 @@ limitations under the License.
 
 ******************************************************************************/
 
-export { bgRdfStatements } from './src/index'
-
 export {
     oxiRdfModule
 } from './src/oxiMock'

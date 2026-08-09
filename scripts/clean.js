@@ -5,7 +5,6 @@ for (const path of [
     'node_modules',
     'out',
     'src/main/build',
-    'src/assets/bg-rdf',
     'src/assets/oxigraph'
 ]) {
     if (fs.existsSync(path)) {
