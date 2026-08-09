@@ -195,6 +195,12 @@ export class RdfStore {
         }
     }
 
+    removeStatements(statements: Statement[], graph: NamedNode|null = null) {
+        statements.forEach((s) => {
+            this.removeStatements(s.subject, s.predicate, s.object, graph)
+        })
+    }
+
     removeStatementsMatching(
         s: SubjectType | null = null,
         p: PredicateType | null = null,
