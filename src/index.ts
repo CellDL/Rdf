@@ -29,10 +29,11 @@ import { write as prettyTurtle } from '@jeswr/pretty-turtle'
 
 export async function initialise(module_or_path?: {
     module_or_path: $oxigraph.InitInput | Promise<$oxigraph.InitInput>
-} | $oxigraph.InitInput | Promise<$oxigraph.InitInput>): Promise<$oxigraph.InitOutput> {
-    const wasm = await initOxigraph(module_or_path)
-    globalThis.rdfModule = oxigraphModule
-    return wasm
+} | $oxigraph.InitInput | Promise<$oxigraph.InitInput>) {
+    if (!globalThis.rdfModule) {
+        await initOxigraph(module_or_path)
+        globalThis.rdfModule = oxigraphModule
+    }
 }
 
 export function initialised(): boolean {
