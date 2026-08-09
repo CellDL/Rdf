@@ -28,7 +28,7 @@ import {
     type NamedNode,
     namedNode,
     RdfStore
-} from './oxiStore'
+} from './index'
 
 //==============================================================================
 

@@ -33,7 +33,7 @@ export {
     namedNode,
     RdfStore,
     TurtleContentType
-} from './src/oxiStore'
+} from './src/index'
 
 export type {
     BlankNode,
@@ -45,7 +45,7 @@ export type {
     PredicateType,
     ObjectType,
     Term
-} from './src/oxiStore'
+} from './src/index'
 
 //==============================================================================
 //==============================================================================
