@@ -40,12 +40,12 @@
         }
     },
     "scripts": {
-        "build": "vite build --config vite.config.ts",
+        "build": "bun oxigraph:check && vite build --config vite.config.ts",
         "clean": "bun scripts/clean.js",
         "format": "bunx --bun biome format --fix --max-diagnostics=none",
         "format:check": "bunx --bun biome format --max-diagnostics=none",
         "lint": "bunx --bun biome lint --fix --error-on-warnings --max-diagnostics=none",
-        "postinstall": "bash ./scripts/postinstall.sh",
+        "oxigraph:check": "bun ./scripts/check-oxigraph.ts",
         "version:new": "bun scripts/version.js"
     },
     "bun": {
