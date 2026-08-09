@@ -18,36 +18,11 @@ limitations under the License.
 
 ******************************************************************************/
 
-export {
-    oxiRdfModule
-} from './src/oxiMock'
+export * from './src/index'
 
-export {
-    blankNode,
-    initialise,
-    initialised,
-    isBlankNode,
-    isLiteral,
-    isNamedNode,
-    literal,
-    namedNode,
-    RdfStore,
-    TurtleContentType
-} from './src/index'
-
-export type {
-    BlankNode,
-    ContentType,
-    Literal,
-    NamedNode,
-    Statement,
-    SubjectType,
-    PredicateType,
-    ObjectType,
-    Term
-} from './src/index'
 export * from './src/namespace'
 
+export { oxiRdfModule } from './src/oxiMock'
 
 //==============================================================================
 //==============================================================================
