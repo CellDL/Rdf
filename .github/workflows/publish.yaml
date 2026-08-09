@@ -1,4 +1,4 @@
-name: Publish RDF support for the CellDL Editor as a npm package
+name: Publish the package on NPM
 on:
   workflow_dispatch:
 
@@ -36,11 +36,11 @@ jobs:
       - name: Install bun
         run: npm install -g bun
 
-      - name: Build RDF support for the CellDL Editor
+      - name: Build the package
         run: |
           bun install
           bun run build
 
-      - name: Publish RDF support for the CellDL Editor on npm
+      - name: Publish the package
         run: |
           npm publish --access public --no-git-checks

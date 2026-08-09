@@ -9,9 +9,9 @@ export default defineConfig({
     build: {
         lib: {
             entry: './index.ts',
-            fileName: (format: string) => `CellDLEditorRDF.${format}.js`,
+            fileName: (format: string) => `RdfStore.${format}.js`,
             formats: ['es'],
-            name: 'CellDLEditorRDF'
+            name: 'RdfStore'
         },
         rollupOptions: {
             output: {

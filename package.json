@@ -1,14 +1,14 @@
 {
-    "name": "@celldl/editor-rdf",
+    "name": "@celldl/rdf-store",
     "version": "0.20260512.0",
     "author": {
         "name": "David Brooks",
         "email": "d.brooks@auckland.ac.nz"
     },
     "bugs": {
-        "url": "https://github.com/CellDL/CellDLEditorRDF/issues"
+        "url": "https://github.com/CellDL/RdfStore/issues"
     },
-    "description": "RDF support for the CellDL Editor.",
+    "description": "An Oxigraph based RDF store.",
     "files": [
         "dist",
         "README.md",
@@ -21,22 +21,22 @@
         "bg-rdf"
     ],
     "license": "Apache-2.0",
-    "module": "dist/CellDLEditorRDF.es.js",
-    "productName": "CellDLEditorRDF",
+    "module": "dist/RdfStore.es.js",
+    "productName": "RdfStore",
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/CellDL/CellDLEditorRDF.git"
+        "url": "git+https://github.com/CellDL/RdfStore.git"
     },
     "type": "module",
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "import": "./dist/CellDLEditorRDF.es.js"
+            "import": "./dist/RdfStore.es.js"
         }
     },
     "scripts": {
