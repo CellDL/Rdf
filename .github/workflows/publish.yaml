@@ -43,4 +43,4 @@ jobs:
 
       - name: Publish the package
         run: |
-          npm publish --access public --no-git-checks
+          npm publish --access public
