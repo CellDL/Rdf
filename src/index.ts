@@ -203,9 +203,9 @@ export class RdfStore {
         }
     }
 
-    removeStatements(statements: Statement[], graph: NamedNode|null = null) {
-        statements.forEach((s) => {
-            this.removeStatements(s.subject, s.predicate, s.object, graph)
+    removeStatements(statements: Statement[]) {
+        statements.forEach(statement => {
+            this.#rdfStore.delete(statement)
         })
     }
 
@@ -216,9 +216,9 @@ export class RdfStore {
         g: NamedNode | null = null
     ) {
         const statements = this.#rdfStore.match(s, p, o, g || globalThis.rdfModule.defaultGraph())
-        for (const statement of statements) {
+        statements.forEach(statement => {
             this.#rdfStore.delete(statement)
-        }
+        })
     }
 
     async serialise(
