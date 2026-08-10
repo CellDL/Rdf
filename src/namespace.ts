@@ -22,6 +22,19 @@ import { isNamedNode, namedNode, type NamedNode } from './index'
 
 //==============================================================================
 
+/**
+ * Return the fragment (the part after `#`) of a URI if it has one
+ * otherwise return the full URI.
+ */
+export function getFragment(uri: NamedNode|string): string {
+    // @ts-expect-error: uri is a NamedNode
+    const uriString = isNamedNode(uri) ? uri.value : uri
+    const parts = uriString.split('#')
+    return parts.at(-1)
+}
+
+//==============================================================================
+
 export class NamespacedUri {
     #nsUri: string
     #prefix: string
