@@ -15,8 +15,6 @@
         "LICENSE.txt"
     ],
     "keywords": [
-        "vue",
-        "component",
         "celldl",
         "bg-rdf"
     ],
@@ -47,11 +45,6 @@
         "lint": "bunx --bun biome lint --fix --error-on-warnings --max-diagnostics=none",
         "oxigraph:check": "bun ./scripts/check-oxigraph.ts",
         "version:new": "bun scripts/version.js"
-    },
-    "bun": {
-        "overrides": {
-            "vue": "3.4.21"
-        }
     },
     "dependencies": {
         "@jeswr/pretty-turtle": "^1.8.2",

@@ -20,7 +20,7 @@
         }
     },
     "linter": {
-        "includes": ["**/*.js", "**/*.ts", "!src/assets/**"]
+        "includes": ["**/*.js", "**/*.ts", "!src/assets/**", "!dist/**"]
     },
     "overrides": [
         {

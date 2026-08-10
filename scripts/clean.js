@@ -3,8 +3,6 @@ import fs from 'node:fs'
 for (const path of [
     'dist',
     'node_modules',
-    'out',
-    'src/main/build',
     'src/assets/oxigraph'
 ]) {
     if (fs.existsSync(path)) {
