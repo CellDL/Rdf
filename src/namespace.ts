@@ -22,17 +22,25 @@ import { isNamedNode, namedNode, type NamedNode } from './index'
 
 //==============================================================================
 
-export type NamespaceType = (_: string) => NamedNode
+export class NamespacedUri {
+    #nsUri: string
+    #prefix: string
 
-export class Namespace {
-    #nsuri: string
+    constructor(prefix: string, nsUri: string) {
+        this.#prefix = prefix
+        this.#nsUri = nsUri
+    }
 
-    constructor(nsuri: string) {
-        this.#nsuri = nsuri
+    get prefix(): string {
+        return this.#prefix
+    }
+
+    get nsUri(): string {
+        return this.#nsUri
     }
 
     uri(ln: string): NamedNode {
-        return namedNode(this.#nsuri + (ln || ''))
+        return namedNode(this.#nsUri + (ln || ''))
     }
 }
 
@@ -55,6 +63,49 @@ class NamespaceMap extends Map<string,string> {
         }
         return NamespaceMap.#instance
     }
+
+    get namespaces(): Record<string, string> {
+        return Object.fromEntries(this.entries())
+    }
+
+    add(namespace: NamespacedUri) {
+        this.set(namespace.prefix, namespace.nsUri)
+    }
+
+    curieSuffix(NS: NamespacedUri, term: string | NamedNode): string {
+        const curie: string = isNamedNode(term) ? (<NamedNode>term).uri : <string>term
+        const fullUri = this.expandCurie(curie)
+        const nsUri = NS.uri('').uri
+        if (fullUri.startsWith(nsUri)) {
+            return fullUri.slice(nsUri.length)
+        }
+        return curie
+    }
+
+    expandCurie(curie: string): string {
+        const parts = curie.split(':')
+        if (parts.length > 1 && this.has(parts[0])) {
+            // @ts-expect-error: `parts[0]` is defined
+            return `${namespaceMapping.get(parts[0])}${parts.slice(1).join(':')}`
+        }
+        return curie
+    }
+
+    getCurie(term: string | NamedNode): string {
+        const fullUri: string = isNamedNode(term) ? (<NamedNode>term).uri : <string>term
+        for (const [prefix, nsUri] of this.entries()) {
+            if (fullUri.startsWith(nsUri)) {
+                return `${prefix}:${fullUri.slice(nsUri.length)}`
+            }
+        }
+        return fullUri
+    }
+
+    update(namespaces: NamespacedUri[]) {
+        for (const ns of namespaces) {
+            this.set(ns.prefix, ns.nsUri)
+        }
+    }
 }
 
 //==============================================================================
@@ -63,39 +114,6 @@ export const namespaceMap = NamespaceMap.instance
 
 //==============================================================================
 
-export function curieSuffix(NS: Namespace, term: string | NamedNode): string {
-    const curie: string = isNamedNode(term) ? (<NamedNode>term).uri : <string>term
-    const fullUri = expandCurie(curie)
-    const nsUri = NS.uri('').uri
-    if (fullUri.startsWith(nsUri)) {
-        return fullUri.slice(nsUri.length)
-    }
-    return curie
-}
-
-//==============================================================================
-
-export function getCurie(term: string | NamedNode): string {
-    const fullUri: string = isNamedNode(term) ? (<NamedNode>term).uri : <string>term
-    for (const [prefix, nsUri] of namespaceMapping.entries()) {
-        if (fullUri.startsWith(nsUri)) {
-            return `${prefix}:${fullUri.slice(nsUri.length)}`
-        }
-    }
-    return fullUri
-}
-
-//==============================================================================
-
-export function expandCurie(curie: string): string {
-    const parts = curie.split(':')
-    // @ts-expect-error: `parts[0]` is defined
-    if (parts.length > 1 && namespaceMapping.has(parts[0])) {
-        // @ts-expect-error: `parts[0]` is defined
-        return `${namespaceMapping.get(parts[0])}${parts.slice(1).join(':')}`
-    }
-    return curie
-}
 
 //==============================================================================
 //==============================================================================
