@@ -115,6 +115,13 @@ export type SubjectType = BlankNode | NamedNode | Quad | Variable
 export type PredicateType = NamedNode | Variable
 export type ObjectType = BlankNode | Literal | NamedNode | Quad | Variable
 
+export interface PredicateValue {
+    predicate: PredicateType
+    object: ObjectType
+}
+
+//==============================================================================
+
 export interface Statement extends Quad {
     subject: SubjectType
     predicate: PredicateType
