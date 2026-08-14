@@ -56,6 +56,7 @@ export type Term = $oxigraph.Term
 export type BlankNode = $oxigraph.BlankNode
 
 export function blankNode(value: string|undefined=undefined): BlankNode {
+    initialise()
     return globalThis.rdfModule.blankNode(value)
 }
 
@@ -69,6 +70,7 @@ export function isBlankNode(term: unknown): boolean {
 export type Literal = $oxigraph.Literal
 
 export function literal(value: string|number|boolean, datatype: NamedNode|undefined=undefined): Literal {
+    initialise()
     return globalThis.rdfModule.literal(value, datatype)
 }
 
@@ -101,6 +103,7 @@ function makeNamedNode(term: Term): NamedNode | Term {
 }
 
 export function namedNode(value: string): NamedNode {
+    initialise()
     return makeNamedNode(globalThis.rdfModule.namedNode(value)) as NamedNode
 }
 
@@ -152,6 +155,7 @@ export class RdfStore {
     #rdfStore: $oxigraph.Store
 
     constructor() {
+        initialise()
         this.#rdfStore = new globalThis.rdfModule.Store()
     }
 
