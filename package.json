@@ -1,12 +1,12 @@
 {
-    "name": "@celldl/rdf-store",
     "version": "1.20260810.2",
+    "name": "@celldl/rdf",
     "author": {
         "name": "David Brooks",
         "email": "d.brooks@auckland.ac.nz"
     },
     "bugs": {
-        "url": "https://github.com/CellDL/RdfStore/issues"
+        "url": "https://github.com/CellDL/Rdf/issues"
     },
     "description": "An Oxigraph based RDF store.",
     "files": [
@@ -19,22 +19,22 @@
         "bg-rdf"
     ],
     "license": "Apache-2.0",
-    "module": "dist/RdfStore.es.js",
-    "productName": "RdfStore",
+    "module": "dist/Rdf.es.js",
+    "productName": "Rdf",
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/CellDL/RdfStore.git"
+        "url": "git+https://github.com/CellDL/Rdf.git"
     },
     "type": "module",
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "import": "./dist/RdfStore.es.js"
+            "import": "./dist/Rdf.es.js"
         }
     },
     "scripts": {
@@ -48,13 +48,12 @@
     },
     "dependencies": {
         "@jeswr/pretty-turtle": "^1.8.2",
-        "oxigraph": "^0.5.5"
+        "oxigraph": "^0.5.9"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.3.11",
-        "@rollup/plugin-typescript": "^12.3.0",
+        "@biomejs/biome": "^2.5.8",
         "@types/node": "^25.0.9",
-        "typescript": "^5.9.3",
-        "vite": "^7.2.7"
+        "typescript": "^7.0.2",
+        "vite": "^8.2.0"
     }
 }
