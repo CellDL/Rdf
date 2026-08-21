@@ -20,8 +20,8 @@ limitations under the License.
 
 export * from './src/index'
 export * from './src/namespace'
-export * from './src/rdfNamespaces'
 export { oxiRdfModule } from './src/oxiMock'
+export * from './src/rdfNamespaces'
 
 //==============================================================================
 //==============================================================================
