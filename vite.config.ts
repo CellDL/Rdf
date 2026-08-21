@@ -1,6 +1,7 @@
 import path from 'node:path'
 import url from 'node:url'
 import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 const _dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
@@ -22,13 +23,16 @@ export default defineConfig({
         target: 'esnext'
     },
     optimizeDeps: {
-        esbuildOptions: {
-            target: 'esnext'
-        },
         exclude: [
             '*.wasm'
         ]
     },
+    plugins: [
+        dts({
+            exclude: ['vite.config.ts'],
+            insertTypesEntry: true
+        })
+    ],
     resolve: {
         alias: {
             '@oxigraph': path.resolve(_dirname, 'src/assets/oxigraph')
